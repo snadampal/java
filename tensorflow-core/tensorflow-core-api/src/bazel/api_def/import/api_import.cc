@@ -184,7 +184,7 @@ int main(int argc, char* argv[]) {
   LOG(INFO) << "Loading " << golden_api_files.size() << " Python API golden files";
   for (const auto& filename : golden_api_files) {
     // Skip the raw_ops API, as it contains all op endpoints
-    if (filename == "tensorflow.raw_ops.pbtxt") {
+    if (str_util::EndsWith(filename,"tensorflow.raw_ops.pbtxt")) {
       continue;
     }
     string contents;

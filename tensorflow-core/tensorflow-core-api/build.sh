@@ -14,6 +14,11 @@ else
     export PYTHON_BIN_PATH=$(which python3)
 fi
 
+# Add platform specific flags
+if [[ "${PLATFORM:-}" == linux-arm64 ]]; then
+  BUILD_FLAGS="--config=mkl_aarch64"
+fi
+
 if [[ "${EXTENSION:-}" == *mkl* ]]; then
     export BUILD_FLAGS="$BUILD_FLAGS --config=mkl"
 fi
